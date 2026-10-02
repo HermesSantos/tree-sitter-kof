@@ -12,13 +12,14 @@ Não cobre: `switch`, lambdas, genéricos, arrays/`new`, `class`/`interface`, `p
 
 ## Instalação no Neovim (nvim-treesitter branch `main`, Neovim 0.12+)
 
-1. Instale o CLI do tree-sitter (o nvim-treesitter usa ele para compilar o parser):
+1. Instale o CLI do tree-sitter e um compilador C (o nvim-treesitter usa os dois para compilar o parser).
+   No Arch:
 
    ```sh
    sudo pacman -S tree-sitter-cli
    ```
 
-2. Configuração mínima (já criada em `~/.config/nvim/lua/plugins/kof.lua`):
+2. Adicione a configuração mínima, por exemplo em `~/.config/nvim/lua/plugins/kof.lua` (LazyVim/lazy.nvim):
 
    ```lua
    return {
@@ -30,7 +31,7 @@ Não cobre: `switch`, lambdas, genéricos, arrays/`new`, `class`/`interface`, `p
          callback = function()
            require("nvim-treesitter.parsers").kof = {
              install_info = {
-               path = "~/Desktop/own_projects/kof_highlight/tree-sitter-kof",
+               url = "https://github.com/HermesSantos/tree-sitter-kof",
                queries = "queries",
              },
            }
@@ -65,5 +66,8 @@ tree-sitter test        # roda test/corpus/
 tree-sitter parse examples/*.kf --quiet
 ```
 
-Depois de alterar `grammar.js`, rode `tree-sitter generate` e, no Neovim, `:TSUpdate kof`.
-Alterações só em `queries/highlights.scm` valem ao reabrir o arquivo (as queries são um symlink).
+Depois de alterar `grammar.js`, rode `tree-sitter generate`, faça commit e push (incluindo `src/`) e,
+no Neovim, `:TSUpdate kof`.
+
+Para testar mudanças sem push, troque `url = ...` por `path = "<caminho do clone local>"` na
+configuração e rode `:TSInstall! kof`.
