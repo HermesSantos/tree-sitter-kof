@@ -53,9 +53,7 @@ Not covered: `switch`, lambdas, generics, arrays/`new`, `class`/`interface`, `pa
 
 ### Testing
 
-```sh
-nvim examples/hello.kf
-```
+Open any `*.kf` file in Neovim.
 
 - `:Inspect` with the cursor over a token shows its group (`@keyword`, `@function.call`, ...).
 - `:InspectTree` shows the syntax tree.
@@ -67,7 +65,6 @@ With `tree-sitter` from pacman (or the one from `package.json`, via `npx`):
 ```sh
 tree-sitter generate    # generates src/ from grammar.js
 tree-sitter test        # runs test/corpus/
-tree-sitter parse examples/*.kf --quiet
 ```
 
 After changing `grammar.js`, run `tree-sitter generate`, commit and push (including `src/`) and,
@@ -129,9 +126,7 @@ Não cobre: `switch`, lambdas, genéricos, arrays/`new`, `class`/`interface`, `p
 
 ### Testar
 
-```sh
-nvim examples/hello.kf
-```
+Abra qualquer arquivo `*.kf` no Neovim.
 
 - `:Inspect` com o cursor sobre um token mostra o grupo (`@keyword`, `@function.call`, ...).
 - `:InspectTree` mostra a árvore sintática.
@@ -143,7 +138,6 @@ Com o `tree-sitter` do pacman (ou o do `package.json`, via `npx`):
 ```sh
 tree-sitter generate    # gera src/ a partir de grammar.js
 tree-sitter test        # roda test/corpus/
-tree-sitter parse examples/*.kf --quiet
 ```
 
 Depois de alterar `grammar.js`, rode `tree-sitter generate`, faça commit e push (incluindo `src/`) e,

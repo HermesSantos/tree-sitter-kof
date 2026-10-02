@@ -1,7 +1,0 @@
-add(Int a, Int b): Int {
-    return a + b
-}
-
-main() {
-    println(add(2, 3))
-}
