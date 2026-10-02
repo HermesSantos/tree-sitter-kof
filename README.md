@@ -2,6 +2,8 @@
 
 [English](#english) | [Português (BR)](#português-br)
 
+![Kof highlighting example](kof_example.png)
+
 ## English
 
 Minimal Tree-sitter grammar for **syntax highlighting** of [Kof](https://koflang.github.io/learn/) (`*.kf`) in Neovim.
