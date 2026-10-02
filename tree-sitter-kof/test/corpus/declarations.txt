@@ -1,0 +1,176 @@
+==================
+Main function
+==================
+
+main() {
+    println("Hello from Kof")
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (expression_statement
+        (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (string
+              (string_content))))))))
+
+==================
+Typed function with return type after parameters
+==================
+
+add(Int a, Int b): Int {
+    return a + b
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters
+      (parameter
+        type: (type_identifier)
+        name: (identifier))
+      (parameter
+        type: (type_identifier)
+        name: (identifier)))
+    type: (type_identifier)
+    body: (block
+      (return_statement
+        (binary_expression
+          left: (identifier)
+          right: (identifier))))))
+
+==================
+Return type before name and void
+==================
+
+String saudacao() { return "oi" }
+void maybe(Bool condition) {
+    return
+}
+
+---
+
+(source_file
+  (function_declaration
+    type: (type_identifier)
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (return_statement
+        (string
+          (string_content)))))
+  (function_declaration
+    type: (void_type)
+    name: (identifier)
+    parameters: (parameters
+      (parameter
+        type: (type_identifier)
+        name: (identifier)))
+    body: (block
+      (return_statement))))
+
+==================
+Record
+==================
+
+record User(String name, String email)
+
+main() {
+    var user = User("Mel", "mel@example.com")
+    println(user.name())
+}
+
+---
+
+(source_file
+  (record_declaration
+    name: (type_identifier)
+    parameters: (parameters
+      (parameter
+        type: (type_identifier)
+        name: (identifier))
+      (parameter
+        type: (type_identifier)
+        name: (identifier))))
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (variable_declaration
+        name: (identifier)
+        value: (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (string
+              (string_content))
+            (string
+              (string_content)))))
+      (expression_statement
+        (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (call_expression
+              function: (field_access
+                object: (identifier)
+                field: (identifier))
+              arguments: (arguments))))))))
+
+==================
+Record with method
+==================
+
+record Token(String kind, String text) {
+    label(): String {
+        return kind
+    }
+}
+
+---
+
+(source_file
+  (record_declaration
+    name: (type_identifier)
+    parameters: (parameters
+      (parameter
+        type: (type_identifier)
+        name: (identifier))
+      (parameter
+        type: (type_identifier)
+        name: (identifier)))
+    body: (record_body
+      (function_declaration
+        name: (identifier)
+        parameters: (parameters)
+        type: (type_identifier)
+        body: (block
+          (return_statement
+            (identifier)))))))
+
+==================
+Comments
+==================
+
+// this is a comment
+
+/* this is a
+   multi-line
+   comment */
+main() {}
+
+---
+
+(source_file
+  (line_comment)
+  (block_comment)
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block)))

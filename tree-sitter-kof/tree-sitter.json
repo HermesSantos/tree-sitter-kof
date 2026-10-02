@@ -1,0 +1,17 @@
+{
+  "grammars": [
+    {
+      "name": "kof",
+      "camelcase": "Kof",
+      "scope": "source.kof",
+      "path": ".",
+      "file-types": ["kf"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Minimal Kof grammar for tree-sitter (syntax highlighting)"
+  }
+}

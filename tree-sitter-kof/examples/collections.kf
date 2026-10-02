@@ -1,0 +1,7 @@
+main() {
+    var users = listOf("Mel", "Kof")
+
+    for (var user in users) {
+        println(user)
+    }
+}

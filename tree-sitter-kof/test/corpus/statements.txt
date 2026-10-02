@@ -1,0 +1,239 @@
+==================
+Variables and literals
+==================
+
+main() {
+    var nome = "com \"aspas\"\n"
+    val PI = 3.14
+    Int idade = 26
+    var total = 42L
+    var taxa = 3.14f
+    Bool ativo = true
+    var nada = null
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (variable_declaration
+        name: (identifier)
+        value: (string
+          (string_content)
+          (escape_sequence)
+          (string_content)
+          (escape_sequence)
+          (escape_sequence)))
+      (variable_declaration
+        name: (identifier)
+        value: (number))
+      (variable_declaration
+        type: (type_identifier)
+        name: (identifier)
+        value: (number))
+      (variable_declaration
+        name: (identifier)
+        value: (number))
+      (variable_declaration
+        name: (identifier)
+        value: (number))
+      (variable_declaration
+        type: (type_identifier)
+        name: (identifier)
+        value: (true))
+      (variable_declaration
+        name: (identifier)
+        value: (null)))))
+
+==================
+If / else
+==================
+
+main() {
+    if (idade >= 18) {
+        print("maior de idade");
+    } else {
+        print("menor de idade");
+    }
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (if_statement
+        condition: (parenthesized_expression
+          (binary_expression
+            left: (identifier)
+            right: (number)))
+        consequence: (block
+          (expression_statement
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (string
+                  (string_content))))))
+        alternative: (block
+          (expression_statement
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (string
+                  (string_content))))))))))
+
+==================
+While with update and assignment
+==================
+
+main() {
+    var i = 0;
+    while (i < 10) {
+        print(i);
+        i++;
+    }
+    i += 3
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (variable_declaration
+        name: (identifier)
+        value: (number))
+      (while_statement
+        condition: (parenthesized_expression
+          (binary_expression
+            left: (identifier)
+            right: (number)))
+        body: (block
+          (expression_statement
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (identifier))))
+          (expression_statement
+            (update_expression
+              operand: (identifier)))))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (number))))))
+
+==================
+For with break and continue
+==================
+
+main() {
+    for (var i = 0; i < 100; i++) {
+        if (i == 50) break;
+        if (i % 2 == 0) continue;
+    }
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (for_statement
+        init: (variable_declaration
+          name: (identifier)
+          value: (number))
+        condition: (binary_expression
+          left: (identifier)
+          right: (number))
+        update: (update_expression
+          operand: (identifier))
+        body: (block
+          (if_statement
+            condition: (parenthesized_expression
+              (binary_expression
+                left: (identifier)
+                right: (number)))
+            consequence: (break_statement))
+          (if_statement
+            condition: (parenthesized_expression
+              (binary_expression
+                left: (binary_expression
+                  left: (identifier)
+                  right: (number))
+                right: (number)))
+            consequence: (continue_statement)))))))
+
+==================
+For-in over listOf
+==================
+
+main() {
+    var users = listOf("Mel", "Kof")
+
+    for (var user in users) {
+        println(user)
+    }
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (variable_declaration
+        name: (identifier)
+        value: (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (string
+              (string_content))
+            (string
+              (string_content)))))
+      (for_in_statement
+        name: (identifier)
+        iterable: (identifier)
+        body: (block
+          (expression_statement
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (identifier)))))))))
+
+==================
+Logical operators precedence
+==================
+
+main() {
+    println(a && !b || c != 0)
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (expression_statement
+        (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (binary_expression
+              left: (binary_expression
+                left: (identifier)
+                right: (unary_expression
+                  operand: (identifier)))
+              right: (binary_expression
+                left: (identifier)
+                right: (number)))))))))

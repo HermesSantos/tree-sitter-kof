@@ -1,0 +1,13 @@
+{
+  "name": "tree-sitter-kof",
+  "version": "0.1.0",
+  "description": "Minimal Kof grammar for tree-sitter (syntax highlighting)",
+  "license": "MIT",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.26.0"
+  }
+}
